@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "57408611854",
+    "project_id": "homemarketplace-677e7",
+    "storage_bucket": "homemarketplace-677e7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:57408611854:android:c4e7198eb6994d0f61be5f",
+        "android_client_info": {
+          "package_name": "com.dean.homemarketplace"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "57408611854-kpdnnq9qkdst40bg6vb62gpua8383l5o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dean.homemarketplace",
+            "certificate_hash": "e2758fd03568397fa28e1f89bd8dbe3dac4fb03b"
+          }
+        },
+        {
+          "client_id": "57408611854-kfu6bmq9auegvuq9d9lbjt71be6720k9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDTWaeXRIJ-eM2DW0Ap_7Go7P4kiMeSxU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "57408611854-kfu6bmq9auegvuq9d9lbjt71be6720k9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

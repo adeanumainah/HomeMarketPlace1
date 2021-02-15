@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F5F5F5"
+    android:padding="@dimen/_16dp"
+    tools:context=".activity.DetailActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_backstage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="@dimen/_8dp"
+            android:layout_marginEnd="@dimen/_16dp"
+            android:src="@drawable/ic_rightarrow" />
+
+
+        <FrameLayout
+            android:id="@+id/fm_detail_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/iv_backstage">
+
+            <ImageView
+                android:id="@+id/iv_image_detail_popular"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_300dp"
+                android:layout_marginTop="@dimen/_16dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/house" />
+        </FrameLayout>
+        <TextView
+            android:id="@+id/tv_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fm_detail_image"
+            android:layout_marginTop="@dimen/_16dp"
+            android:text="@string/rating"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="@dimen/_12sp"
+            android:textStyle="bold" />
+
+        <RatingBar
+            android:id="@+id/rt_var_detail_popular"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fm_detail_image"
+            android:layout_marginStart="@dimen/_16dp"
+            android:layout_marginTop="@dimen/_16dp"
+            android:layout_marginEnd="@dimen/_16dp"
+            android:layout_toEndOf="@id/tv_rating"
+            android:numStars="5"
+            android:rating="3.5" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/rb_fav_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:backgroundTint="@color/mustard"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/_16dp"
+            android:layout_above="@id/lable_price"
+            android:src="@drawable/ic_baseline_favorite"
+            app:layout_anchor = "@id/fm_detail_image"/>
+
+        <TextView
+            android:id="@+id/rupiah"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_rating"
+            android:layout_marginTop="@dimen/_5dp"
+            android:paddingTop="@dimen/_5dp"
+            android:text="@string/lable_rp"
+            android:textSize="@dimen/_23dp"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/lable_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_rating"
+            android:layout_marginTop="@dimen/_5dp"
+            android:paddingTop="@dimen/_5dp"
+            android:text="@string/price"
+            android:layout_marginStart="@dimen/_5dp"
+            android:layout_toEndOf="@id/rupiah"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/_23dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/lable_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rupiah"
+            android:layout_marginTop="@dimen/_5dp"
+            android:paddingTop="@dimen/_5dp"
+            android:text="@string/lable_name"
+            android:textSize="@dimen/_25dp"
+            android:textColor="@android:color/black" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvdahboardDesc"
+            android:layout_width="380dp"
+            android:layout_height="150dp"
+            android:orientation="vertical"
+            android:elevation="8dp"
+            android:layout_below="@id/lable_name"
+            android:clipToPadding="false"
+            android:layout_centerHorizontal="true"
+            android:clipChildren="false"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="10dp"
+            android:background="@drawable/squareimage2"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/desc"
+                android:textSize="@dimen/_20dp"
+                android:paddingLeft="@dimen/_15dp"
+                android:layout_marginTop="@dimen/_15dp"
+                android:textColor="@android:color/black"
+                android:maxLines="3"/>
+
+            <TextView
+                android:id="@+id/txtSelengkapnya"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="130dp"
+                android:layout_marginRight="@dimen/_15dp"
+                android:layout_alignParentEnd="true"
+                android:text="@string/baca"
+                android:paddingLeft="@dimen/_15dp"
+                android:textColor="@color/mustard"
+                android:textSize="@dimen/_15dp"
+                android:textStyle="bold" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvdahboardInfoProperti"
+            android:layout_width="380dp"
+            android:layout_height="150dp"
+            android:orientation="vertical"
+            android:elevation="8dp"
+            android:layout_below="@id/cvdahboardDesc"
+            android:clipToPadding="false"
+            android:layout_centerHorizontal="true"
+            android:clipChildren="false"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="10dp"
+            android:background="@drawable/squareimage2"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/infoProperti"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Informasi"
+                android:textSize="@dimen/_20dp"
+                android:textStyle="bold"
+                android:paddingLeft="@dimen/_15dp"
+                android:layout_marginTop="@dimen/_12dp"
+                android:textColor="@android:color/black"
+                android:maxLines="3"/>
+
+            <TextView
+                android:id="@+id/kodisi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/_5dp"
+                android:layout_marginTop="@dimen/_50dp"
+                android:paddingLeft="@dimen/_15dp"
+                android:text="@string/lable_kondisi"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_15sp"/>
+
+
+            <TextView
+                android:id="@+id/lable_kondisi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lable_name"
+                android:layout_marginStart="200dp"
+                android:paddingTop="@dimen/_5dp"
+                android:layout_toEndOf="@id/kodisi"
+                android:layout_marginTop="@dimen/_50dp"
+                android:text="@string/kondisi"
+                android:textStyle="bold"
+                android:textSize="@dimen/_15sp" />
+
+            <TextView
+                android:id="@+id/luas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="90dp"
+                android:paddingLeft="@dimen/_15dp"
+                android:text="@string/lable_luas"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_15sp"/>
+
+
+            <TextView
+                android:id="@+id/lable_luas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lable_kondisi"
+                android:paddingTop="@dimen/_5dp"
+                android:layout_toEndOf="@id/luas"
+                android:layout_marginTop="90dp"
+                android:text="@string/luastanah"
+                android:maxLines="3"
+                android:layout_marginStart="200dp"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_15sp" />
+
+            <TextView
+                android:id="@+id/luas_tanah"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lable_kondisi"
+                android:paddingTop="@dimen/_5dp"
+                android:layout_toEndOf="@id/luas"
+                android:layout_marginTop="90dp"
+                android:text="@string/luasm"
+                android:maxLines="3"
+                android:layout_marginStart="230dp"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_15sp" />
+
+            <TextView
+                android:id="@+id/lantai"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="120dp"
+                android:paddingLeft="@dimen/_15dp"
+                android:text="@string/lable_lantai"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_15sp"/>
+
+
+            <TextView
+                android:id="@+id/lable_lantai"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lable_luas"
+                android:paddingTop="@dimen/_5dp"
+                android:layout_toEndOf="@id/luas"
+                android:layout_marginTop="120dp"
+                android:text="@string/lantai"
+                android:maxLines="3"
+                android:layout_marginStart="200dp"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_15sp" />
+
+            <TextView
+                android:id="@+id/listing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="160dp"
+                android:paddingLeft="@dimen/_15dp"
+                android:text="@string/lable_listing"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_15sp"/>
+
+
+            <TextView
+                android:id="@+id/lable_listing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lable_luas"
+                android:paddingTop="@dimen/_5dp"
+                android:layout_toEndOf="@id/luas"
+                android:layout_marginTop="160dp"
+                android:text="@string/tipe_listing"
+                android:maxLines="3"
+                android:layout_marginStart="200dp"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_15sp" />
+
+            <TextView
+                android:id="@+id/sertifikat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="180dp"
+                android:paddingLeft="@dimen/_15dp"
+                android:text="@string/sertifikat"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_15sp"/>
+
+
+            <TextView
+                android:id="@+id/lable_sertifikat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lable_luas"
+                android:paddingTop="@dimen/_5dp"
+                android:layout_toEndOf="@id/luas"
+                android:layout_marginTop="180dp"
+                android:text="@string/sertifikat_rumah"
+                android:maxLines="3"
+                android:layout_marginStart="200dp"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_15sp" />
+
+            <TextView
+                android:id="@+id/perabotan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="200dp"
+                android:paddingLeft="@dimen/_15dp"
+                android:text="@string/perabotan"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_15sp"/>
+
+
+            <TextView
+                android:id="@+id/lable_perabotan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lable_luas"
+                android:paddingTop="@dimen/_5dp"
+                android:layout_toEndOf="@id/luas"
+                android:layout_marginTop="200dp"
+                android:text="@string/perabotan_rumah"
+                android:maxLines="3"
+                android:layout_marginStart="200dp"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_15sp" />
+
+
+            <TextView
+                android:id="@+id/txtlihat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="130dp"
+                android:layout_marginRight="@dimen/_15dp"
+                android:layout_alignParentEnd="true"
+                android:text="@string/lihat"
+                android:paddingLeft="@dimen/_15dp"
+                android:textColor="@color/mustard"
+                android:textSize="@dimen/_15dp"
+                android:textStyle="bold" />
+
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+</ScrollView>
