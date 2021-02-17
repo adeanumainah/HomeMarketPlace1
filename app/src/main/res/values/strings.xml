@@ -49,5 +49,11 @@
     <string name="hubungi_kami">Hubungi kami</string>
     <string name="title_sewa">Sewa</string>
     <string name="title_jual">Jual</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="username">Username</string>
+    <string name="upusername">Username :</string>
+    <string name="upemail">Email :</string>
+    <string name="sign_out">Sign Out</string>
 
 </resources>
