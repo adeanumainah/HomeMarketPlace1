@@ -12,14 +12,14 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.dean.homemarketplace.ui.fragment.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_sewa"
+        android:name="com.dean.homemarketplace.ui.fragment.SewaFragment"
+        android:label="@string/title_sewa"
+        tools:layout="@layout/fragment_sewa" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.dean.homemarketplace.ui.fragment.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_jual"
+        android:name="com.dean.homemarketplace.ui.fragment.JualFragment"
+        android:label="@string/title_jual"
+        tools:layout="@layout/fragment_jual" />
 </navigation>

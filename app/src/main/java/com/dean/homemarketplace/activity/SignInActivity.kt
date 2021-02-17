@@ -53,6 +53,7 @@ class SignInActivity : AppCompatActivity() {
 
     }
 
+    //authentication sign in email password
     private fun authUserSignIn(email: String, pass: String) {
         var status: Boolean? = null
 
@@ -68,6 +69,7 @@ class SignInActivity : AppCompatActivity() {
             }
     }
 
+    //request sign in google atau gmail
     private fun signIn() {
         val gson = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id)).requestEmail().build()
@@ -79,6 +81,9 @@ class SignInActivity : AppCompatActivity() {
         startActivityForResult(signInIntent, 4)
     }
 
+    //hasil request sign in google
+    //setelah user memilih account yg udh sign in
+    //mengambil informasi dari user yg signin google menggunakan on activity result
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -93,6 +98,8 @@ class SignInActivity : AppCompatActivity() {
         }
     }
 
+    //authentication firebase sign in
+    //prores mengenali identitas pengguna
     private fun firebaseAuthWithGoogle(account: GoogleSignInAccount?) {
         var uid = String()
         val credential = GoogleAuthProvider.getCredential(account?.idToken, null)
@@ -110,6 +117,7 @@ class SignInActivity : AppCompatActivity() {
                 }
     }
 
+    //mengechek database
     private fun checkDatabase(uid: String?, account: GoogleSignInAccount?) {
         val database = FirebaseDatabase.getInstance()
         val myref = database.getReference(Constan.tb_user)
@@ -133,6 +141,8 @@ class SignInActivity : AppCompatActivity() {
         })
     }
 
+    //menambahkan data user ke realtime database
+    //verifikasi data
     private fun insertUser(
             name: String,
             email: String,

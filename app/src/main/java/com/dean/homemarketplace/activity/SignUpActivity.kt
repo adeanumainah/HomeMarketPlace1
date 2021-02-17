@@ -40,6 +40,7 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
 
+    //proses authentication
     private fun authUserSignUp(email: String, pass: String): Boolean? {
         auth = FirebaseAuth.getInstance()
 
@@ -64,6 +65,7 @@ class SignUpActivity : AppCompatActivity() {
 
     }
 
+    //proses menambahkan data user ke realtime database
     private fun insertUser(
             name: String,
             email: String,
@@ -76,10 +78,13 @@ class SignUpActivity : AppCompatActivity() {
 
         val database = FirebaseDatabase.getInstance()
 
+        //id yg masuk ke database
         var key = database.reference.push().key
 
+        //nama table
         val myRef = database.getReference(Constan.tb_user)
 
+        //menyimpan ke database
         myRef.child(key!!).setValue(user)
 
         return true

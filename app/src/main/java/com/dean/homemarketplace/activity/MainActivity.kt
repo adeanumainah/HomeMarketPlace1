@@ -5,8 +5,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.dean.homemarketplace.R
-import com.dean.homemarketplace.ui.fragment.DashboardFragment
+import com.dean.homemarketplace.ui.fragment.SewaFragment
 import com.dean.homemarketplace.ui.fragment.HomeFragment
+import com.dean.homemarketplace.ui.fragment.JualFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -18,9 +19,15 @@ class MainActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
 
-            R.id.navigation_dashboard -> {
-                val dashboardFragment = DashboardFragment()
-                addFragment (dashboardFragment)
+            R.id.navigation_sewa -> {
+                val sewaFragment = SewaFragment()
+                addFragment (sewaFragment)
+                return@OnNavigationItemSelectedListener true
+            }
+
+            R.id.navigation_jual -> {
+                val jualFragment = JualFragment()
+                addFragment (jualFragment)
                 return@OnNavigationItemSelectedListener true
             }
 
