@@ -55,5 +55,7 @@
     <string name="upusername">Username :</string>
     <string name="upemail">Email :</string>
     <string name="sign_out">Sign Out</string>
+    <string name="title_profile">Profile</string>
+    <string name="edit_profile">Edit Profile</string>
 
 </resources>

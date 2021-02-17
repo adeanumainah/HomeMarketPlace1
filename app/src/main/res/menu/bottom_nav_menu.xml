@@ -17,4 +17,9 @@
         android:icon="@drawable/sell"
         android:title="@string/title_jual" />
 
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/ic__person"
+        android:title="@string/title_profile" />
+
 </menu>

@@ -8,6 +8,7 @@ import com.dean.homemarketplace.R
 import com.dean.homemarketplace.ui.fragment.SewaFragment
 import com.dean.homemarketplace.ui.fragment.HomeFragment
 import com.dean.homemarketplace.ui.fragment.JualFragment
+import com.dean.homemarketplace.ui.fragment.ProfileFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -28,6 +29,12 @@ class MainActivity : AppCompatActivity() {
             R.id.navigation_jual -> {
                 val jualFragment = JualFragment()
                 addFragment (jualFragment)
+                return@OnNavigationItemSelectedListener true
+            }
+
+            R.id.navigation_profile -> {
+                val profileFragment = ProfileFragment()
+                addFragment (profileFragment)
                 return@OnNavigationItemSelectedListener true
             }
 

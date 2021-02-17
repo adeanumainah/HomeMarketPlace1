@@ -47,7 +47,7 @@
             </FrameLayout>
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="60dp"
                 android:layout_below="@id/frame1"
                 android:background="@android:color/white"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -97,7 +97,7 @@
                         android:elevation="50dp"
                         android:layout_margin="@dimen/_16dp"
                         android:textSize="20sp"
-                        android:background="@drawable/btn_gradiasi"/>
+                        android:background="@drawable/bg_white"/>
 
                     <Button
                         android:layout_width="110dp"
@@ -107,7 +107,7 @@
                         android:elevation="50dp"
                         android:layout_margin="@dimen/_16dp"
                         android:textSize="20sp"
-                        android:background="@drawable/btn_gradiasi"/>
+                        android:background="@drawable/bg_white"/>
 
 
                 </LinearLayout>

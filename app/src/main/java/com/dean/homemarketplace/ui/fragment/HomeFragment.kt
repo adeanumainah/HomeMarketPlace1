@@ -99,6 +99,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         val carouselView = is_main as CarouselView
         //set yang sudah ditempel
         carouselView.setImageListener(imageContentList)
@@ -115,7 +116,6 @@ class HomeFragment : Fragment() {
             startActivity(intentBest)
         }
 
-
     }
 
     private fun showSelected(it: Home) {
@@ -123,8 +123,6 @@ class HomeFragment : Fragment() {
         page.putExtra(DetailActivity.KEY_POPULAR_HOME, it)
         startActivity(page)
     }
-
-    
 
 
 }

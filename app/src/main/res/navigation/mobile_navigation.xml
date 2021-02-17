@@ -22,4 +22,10 @@
         android:name="com.dean.homemarketplace.ui.fragment.JualFragment"
         android:label="@string/title_jual"
         tools:layout="@layout/fragment_jual" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.dean.homemarketplace.ui.fragment.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>
