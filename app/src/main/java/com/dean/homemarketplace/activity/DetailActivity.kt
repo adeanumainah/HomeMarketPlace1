@@ -15,6 +15,7 @@ class DetailActivity : AppCompatActivity() {
         const val KEY_POPULAR_HOME = "key_popular_home"
     }
 
+
     private var home: Home? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +34,7 @@ class DetailActivity : AppCompatActivity() {
         tv_lable_furnished.text = home?.furnished
         tv_lable_lantai.text = home?.number_of_floors
         tv_lable_luas.text = home?.surface_area
-//
+
 //        btn_call_us.setOnClickListener {
 //            val nomor = "09667347"
 //            val panggil = Intent(Intent.ACTION_DIAL)
@@ -44,7 +45,7 @@ class DetailActivity : AppCompatActivity() {
     }
 
     fun panggil(view: View) {
-        val nomor = "09667347"
+        val nomor = "082320216812"
         val panggil = Intent(Intent.ACTION_DIAL)
         panggil.data = Uri.fromParts("tel", nomor, null)
         startActivity(panggil)

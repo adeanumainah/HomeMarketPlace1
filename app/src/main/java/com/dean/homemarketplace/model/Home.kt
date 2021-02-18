@@ -16,6 +16,7 @@ data class Home (
         var number_of_floors: String,
         var property_facilities: String,
         var type: String,
+        var image: Int,
         var desc: String
 
 ) : Parcelable

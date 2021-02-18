@@ -1,9 +1,8 @@
 package com.dean.homemarketplace.activity
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -15,9 +14,13 @@ import com.dean.homemarketplace.R
 import com.dean.homemarketplace.adapter.ProyekTerkiniAdapter
 import com.dean.homemarketplace.model.Home
 import com.dean.homemarketplace.model.ResponseItem
+import com.dean.homemarketplace.utils.NetworkConfig
 import kotlinx.android.synthetic.main.activity_see_all_terkini.*
 import org.json.JSONArray
 import org.json.JSONException
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class SeeAllTerkiniActivity : AppCompatActivity() {
 
@@ -30,6 +33,22 @@ class SeeAllTerkiniActivity : AppCompatActivity() {
         setContentView(R.layout.activity_see_all_terkini)
         supportActionBar?.hide()
 
+//        NetworkConfig().getService()
+//                .getUsers()
+//                .enqueue(object : Callback<List<ResponseItem>> {
+//                    override fun onFailure(call: Call<List<ResponseItem>>, t: Throwable) {
+//                        Toast.makeText(this@SeeAllTerkiniActivity, t.localizedMessage, Toast.LENGTH_SHORT).show()
+//                    }
+//
+//                    override fun onResponse(
+//                            call: Call<List<ResponseItem>>,
+//                            response: Response<List<ResponseItem>>
+//                    ) {
+//                        rv_see_all_terkini.adapter = ProyekTerkiniAdapter(response.body())
+//                    }
+//
+//                })
+
         rv_see_all_terkini.setHasFixedSize(true)
         rv_see_all_terkini.layoutManager = LinearLayoutManager(this)
         getListHome()
@@ -37,9 +56,9 @@ class SeeAllTerkiniActivity : AppCompatActivity() {
 
     private fun getListHome() {
         AndroidNetworking.get(com.dean.homemarketplace.utils.APIUtils.API_URL)
-            .setPriority(Priority.MEDIUM).build().getAsJSONArray(object : JSONArrayRequestListener{
+            .setPriority(Priority.MEDIUM).build().getAsJSONArray(object : JSONArrayRequestListener {
                 override fun onResponse(response: JSONArray) {
-                    for (i in 0 until response.length()){
+                    for (i in 0 until response.length()) {
                         try {
                             val dataApi = ResponseItem()
                             val jsonObject = response.getJSONObject(i)
@@ -56,7 +75,7 @@ class SeeAllTerkiniActivity : AppCompatActivity() {
                             responseItem.add(dataApi)
                             showRecyclerList()
                             showRecyclerGrid()
-                        } catch (e : JSONException){
+                        } catch (e: JSONException) {
                             e.printStackTrace()
                             Toast.makeText(
                                 this@SeeAllTerkiniActivity,
@@ -70,7 +89,7 @@ class SeeAllTerkiniActivity : AppCompatActivity() {
                 override fun onError(anError: ANError?) {
                     Toast.makeText(
                         this@SeeAllTerkiniActivity,
-                        "Hayolohh gabisa tampil kann wkwk EROR berarti, benerin dulu sana!!",
+                        "Semangat benerin eror nya cantik!!",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -80,7 +99,7 @@ class SeeAllTerkiniActivity : AppCompatActivity() {
     }
 
     private fun showRecyclerList() {
-//        proyekTerkiniAdapter = ProyekTerkiniAdapter(this@SeeAllTerkiniActivity, responseItem, this)
+        proyekTerkiniAdapter = ProyekTerkiniAdapter(this@SeeAllTerkiniActivity.listHome)
         rv_see_all_terkini!!.adapter = proyekTerkiniAdapter
     }
 

@@ -58,4 +58,17 @@
     <string name="title_profile">Profile</string>
     <string name="edit_profile">Edit Profile</string>
 
+    <array name="data_photo">
+        <item>@drawable/house1</item>
+        <item>@drawable/house2</item>
+        <item>@drawable/house3</item>
+        <item>@drawable/house4</item>
+        <item>@drawable/house5</item>
+        <item>@drawable/house6</item>
+        <item>@drawable/house7</item>
+        <item>@drawable/house8</item>
+        <item>@drawable/house9</item>
+
+
+    </array>
 </resources>

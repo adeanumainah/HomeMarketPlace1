@@ -103,6 +103,9 @@ dependencies {
     //rest api
     implementation 'com.amitshekhar.android:android-networking:1.0.2'
 
+    implementation("com.squareup.okhttp3:logging-interceptor:4.2.1")
+    implementation 'org.glassfish:javax.annotation:10.0-b28'
+
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
