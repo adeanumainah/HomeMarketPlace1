@@ -23,6 +23,7 @@ class DetailActivity : AppCompatActivity() {
         home = intent.getParcelableExtra(KEY_POPULAR_HOME)
 
         tv_lable_name.text = home?.name
+        tv_lable_address.text = home?.address
         tv_lable_price.text = home?.price
         tv_lable_desc.text = home?.desc
         tv_lable_type.text = home?.type

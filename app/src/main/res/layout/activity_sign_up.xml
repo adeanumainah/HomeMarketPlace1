@@ -116,10 +116,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="22dp"
-                android:background="@drawable/bg_btn"
+                android:background="@drawable/bg_white"
                 android:text="Register"
                 android:textAllCaps="false"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/white"
                 android:textSize="18sp" />
 
             <TextView

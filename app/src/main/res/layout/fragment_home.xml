@@ -11,49 +11,51 @@
         android:layout_height="wrap_content">
 
         <RelativeLayout
+            android:id="@+id/rv_main"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/rv_main">
+            android:layout_height="wrap_content">
+
             <FrameLayout
+                android:id="@+id/frame1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@android:color/white"
-                android:id="@+id/frame1">
+                android:background="@android:color/white">
 
                 <LinearLayout
+                    android:id="@+id/lineBar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/lineBar"
                     android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/title"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:text="SweetHome"
                         android:layout_weight="1"
-                        android:textStyle="bold"
-                        android:textSize="@dimen/_23sp"
                         android:gravity="center"
-                        android:textColor="@color/mustard"/>
+                        android:text="SweetHome"
+                        android:textColor="@color/mustard"
+                        android:textSize="@dimen/_23sp"
+                        android:textStyle="bold" />
 
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_25dp"
-                        android:src="@drawable/more2"
+                        android:layout_gravity="center"
                         android:layout_weight="3"
-                        android:layout_gravity="center"/>
+                        android:src="@drawable/more2" />
                 </LinearLayout>
             </FrameLayout>
+
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_text_layout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_below="@id/frame1"
-                android:background="@android:color/white"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_marginStart="@dimen/_24dp"
                 android:layout_marginEnd="@dimen/_24dp"
-                android:id="@+id/input_text_layout"
+                android:background="@android:color/white"
                 app:boxCornerRadiusBottomEnd="@dimen/_8p"
                 app:boxCornerRadiusBottomStart="@dimen/_8p"
                 app:boxCornerRadiusTopEnd="@dimen/_8p"
@@ -65,23 +67,23 @@
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_search_black_24dp"
                     android:drawablePadding="@dimen/_8p"
-                    android:hint="@string/searchRumah"/>
+                    android:hint="@string/searchRumah" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvdahboard"
                 android:layout_width="380dp"
                 android:layout_height="100dp"
-                android:orientation="vertical"
-                android:elevation="8dp"
                 android:layout_below="@id/input_text_layout"
-                android:clipToPadding="false"
                 android:layout_centerHorizontal="true"
-                android:clipChildren="false"
-                app:cardCornerRadius="5dp"
-                app:cardElevation="10dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/squareimage2"
-                android:layout_marginTop="10dp">
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:elevation="8dp"
+                android:orientation="vertical"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="10dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -92,22 +94,24 @@
                     <Button
                         android:layout_width="110dp"
                         android:layout_height="50dp"
-                        android:text="@string/beli"
-                        android:layout_marginEnd="40dp"
-                        android:elevation="50dp"
                         android:layout_margin="@dimen/_16dp"
-                        android:textSize="20sp"
-                        android:background="@drawable/bg_white"/>
+                        android:layout_marginEnd="40dp"
+                        android:background="@drawable/bg_white"
+                        android:elevation="50dp"
+                        android:text="@string/beli"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
 
                     <Button
                         android:layout_width="110dp"
                         android:layout_height="50dp"
-                        android:text="@string/sewa"
-                        android:layout_marginEnd="40dp"
-                        android:elevation="50dp"
                         android:layout_margin="@dimen/_16dp"
-                        android:textSize="20sp"
-                        android:background="@drawable/bg_white"/>
+                        android:layout_marginEnd="40dp"
+                        android:background="@drawable/bg_white"
+                        android:elevation="50dp"
+                        android:text="@string/sewa"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
 
 
                 </LinearLayout>
@@ -126,43 +130,7 @@
                 app:radius="@dimen/_5dp"
                 app:slideInterval="3000"
                 app:strokeColor="@color/mustard"
-                app:strokeWidth="@dimen/_1dp"/>
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/is_main"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="@dimen/_16dp"
-                android:layout_marginTop="@dimen/_16dp"
-                android:text="@string/terkini"
-                android:textColor="@android:color/black"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-
-            <TextView
-                android:id="@+id/tv_see_all"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/is_main"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="@dimen/_16dp"
-                android:layout_marginEnd="@dimen/_16dp"
-                android:text="@string/see"
-                android:textColor="@android:color/holo_blue_light"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_terkini"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tv_most_terkini"
-                android:layout_marginStart="@dimen/_5dp"
-                android:layout_marginTop="@dimen/_5dp"
-                android:layout_marginEnd="@dimen/_5dp"/>
+                app:strokeWidth="@dimen/_1dp" />
 
             <TextView
                 android:id="@+id/tv_most_terkini"
@@ -177,7 +145,6 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-
             <TextView
                 android:id="@+id/tv_see_all_terkini"
                 android:layout_width="wrap_content"
@@ -191,16 +158,16 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
+
+
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_popular"
+                android:id="@+id/rv_terkini"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_most_terkini"
                 android:layout_marginStart="@dimen/_5dp"
                 android:layout_marginTop="@dimen/_5dp"
-                android:layout_marginEnd="@dimen/_5dp"/>
-
-
+                android:layout_marginEnd="@dimen/_5dp" />
 
             <TextView
                 android:id="@+id/tv_most_popular"
@@ -215,7 +182,6 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-
             <TextView
                 android:id="@+id/tv_see_all_popular"
                 android:layout_width="wrap_content"
@@ -229,14 +195,15 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
+
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_popular"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@id/rv_popular"
                 android:layout_below="@id/tv_most_popular"
                 android:layout_marginStart="@dimen/_5dp"
                 android:layout_marginTop="@dimen/_5dp"
-                android:layout_marginEnd="@dimen/_5dp"/>
+                android:layout_marginEnd="@dimen/_5dp" />
 
 
         </RelativeLayout>

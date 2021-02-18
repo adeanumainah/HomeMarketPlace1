@@ -84,7 +84,7 @@
                 android:background="@color/white"
                 android:text="Masuk"
                 android:textAllCaps="false"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="18sp" />
 
             <TextView

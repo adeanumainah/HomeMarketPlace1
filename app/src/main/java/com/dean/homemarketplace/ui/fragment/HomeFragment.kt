@@ -106,7 +106,7 @@ class HomeFragment : Fragment() {
         //membaca maximum index yang dibaca
         carouselView.setPageCount(imageContentSlider.count())
 
-        tv_see_all.setOnClickListener {
+        tv_see_all_terkini.setOnClickListener {
             val intent = Intent(context, SeeAllTerkiniActivity::class.java)
             startActivity(intent)
         }
