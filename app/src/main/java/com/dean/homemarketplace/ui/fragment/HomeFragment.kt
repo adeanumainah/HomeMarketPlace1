@@ -24,6 +24,7 @@ import com.dean.homemarketplace.model.Home
 import com.dean.homemarketplace.model.ResponseItem
 import com.dean.homemarketplace.utils.NetworkConfig
 import com.dean.homemarketplace.utils.ProductServices
+import com.google.gson.Gson
 import com.synnapps.carouselview.CarouselView
 import com.synnapps.carouselview.ImageListener
 import kotlinx.android.synthetic.main.activity_see_all_terkini.*
@@ -125,13 +126,14 @@ class HomeFragment : Fragment() {
             .getUsers()
             .enqueue(object : Callback<List<ResponseItem>> {
                 override fun onFailure(call: Call<List<ResponseItem>>, t: Throwable) {
-                    Toast.makeText(activity,"Yahh! Ga muncul kasian dehh",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(activity,"Yahh! ga muncul",Toast.LENGTH_SHORT).show()
                 }
 
                 override fun onResponse(
                     call: Call<List<ResponseItem>>,
                     response: Response<List<ResponseItem>>
                 ) {
+                    Log.d("TEST", "onResponse: ${Gson().toJson(response.body())}")
                     rv_terkini.adapter = HomeAdapter(response.body())
                 }
 

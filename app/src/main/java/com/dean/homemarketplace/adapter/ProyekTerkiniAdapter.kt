@@ -6,9 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.dean.homemarketplace.R
 import com.dean.homemarketplace.model.Home
+import com.dean.homemarketplace.model.ResponseItem
 import kotlinx.android.synthetic.main.row_listh.view.*
 
-class ProyekTerkiniAdapter(val data: ArrayList<Home>):
+class ProyekTerkiniAdapter(val data: List<ResponseItem>?):
     RecyclerView.Adapter<ProyekTerkiniAdapter.TerkiniViewHolder>() {
 
 
@@ -19,7 +20,7 @@ class ProyekTerkiniAdapter(val data: ArrayList<Home>):
         return TerkiniViewHolder(view)
     }
 
-    override fun getItemCount(): Int = data?.size ?: 0
+    override fun getItemCount(): Int = data?.size ?:0
 
     override fun onBindViewHolder(holder: TerkiniViewHolder, position: Int) {
         holder.bind(data?.get(position))
@@ -27,7 +28,7 @@ class ProyekTerkiniAdapter(val data: ArrayList<Home>):
 
     //viewholder bergunu u ngereset data ke view kita
     class TerkiniViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(get: Home) {
+        fun bind(get: ResponseItem?) {
 
             itemView.tv_name_rumah.text = get?.name
             itemView.tv_address_rumah.text = get?.address

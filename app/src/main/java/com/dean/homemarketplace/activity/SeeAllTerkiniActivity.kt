@@ -1,6 +1,7 @@
 package com.dean.homemarketplace.activity
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
@@ -15,6 +16,7 @@ import com.dean.homemarketplace.adapter.ProyekTerkiniAdapter
 import com.dean.homemarketplace.model.Home
 import com.dean.homemarketplace.model.ResponseItem
 import com.dean.homemarketplace.utils.NetworkConfig
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_see_all_terkini.*
 import org.json.JSONArray
 import org.json.JSONException
@@ -33,21 +35,23 @@ class SeeAllTerkiniActivity : AppCompatActivity() {
         setContentView(R.layout.activity_see_all_terkini)
         supportActionBar?.hide()
 
-//        NetworkConfig().getService()
-//                .getUsers()
-//                .enqueue(object : Callback<List<ResponseItem>> {
-//                    override fun onFailure(call: Call<List<ResponseItem>>, t: Throwable) {
-//                        Toast.makeText(this@SeeAllTerkiniActivity, t.localizedMessage, Toast.LENGTH_SHORT).show()
-//                    }
-//
-//                    override fun onResponse(
-//                            call: Call<List<ResponseItem>>,
-//                            response: Response<List<ResponseItem>>
-//                    ) {
-//                        rv_see_all_terkini.adapter = ProyekTerkiniAdapter(response.body())
-//                    }
-//
-//                })
+        NetworkConfig().getService()
+                .getUsers()
+                .enqueue(object : Callback<List<ResponseItem>> {
+                    override fun onFailure(call: Call<List<ResponseItem>>, t: Throwable) {
+                        Toast.makeText(this@SeeAllTerkiniActivity, t.localizedMessage, Toast.LENGTH_SHORT).show()
+                        Log.d("TEST", "onFailure: ${t.localizedMessage}")
+                    }
+
+                    override fun onResponse(
+                            call: Call<List<ResponseItem>>,
+                            response: Response<List<ResponseItem>>
+                    ) {
+                        Log.d("TEST", "onResponse: ${Gson().toJson(response.body())}")
+                        rv_see_all_terkini.adapter = ProyekTerkiniAdapter(response.body())
+                    }
+
+                })
 
         rv_see_all_terkini.setHasFixedSize(true)
         rv_see_all_terkini.layoutManager = LinearLayoutManager(this)
@@ -73,8 +77,8 @@ class SeeAllTerkiniActivity : AppCompatActivity() {
                             dataApi.surfaceArea = jsonObject.getString("surface_area")
 
                             responseItem.add(dataApi)
-                            showRecyclerList()
-                            showRecyclerGrid()
+//                            showRecyclerList()
+//                            showRecyclerGrid()
                         } catch (e: JSONException) {
                             e.printStackTrace()
                             Toast.makeText(
@@ -98,15 +102,15 @@ class SeeAllTerkiniActivity : AppCompatActivity() {
 
     }
 
-    private fun showRecyclerList() {
-        proyekTerkiniAdapter = ProyekTerkiniAdapter(this@SeeAllTerkiniActivity.listHome)
-        rv_see_all_terkini!!.adapter = proyekTerkiniAdapter
-    }
-
-    private fun showRecyclerGrid() {
-        val layoutManagerStaggered = StaggeredGridLayoutManager(2, GridLayoutManager.VERTICAL)
-        rv_see_all_terkini.layoutManager = layoutManagerStaggered
-        rv_see_all_terkini.adapter = ProyekTerkiniAdapter(listHome)
-    }
+//    private fun showRecyclerList() {
+//        proyekTerkiniAdapter = ProyekTerkiniAdapter(this@SeeAllTerkiniActivity.listHome)
+//        rv_see_all_terkini!!.adapter = proyekTerkiniAdapter
+//    }
+//
+//    private fun showRecyclerGrid() {
+//        val layoutManagerStaggered = StaggeredGridLayoutManager(2, GridLayoutManager.VERTICAL)
+//        rv_see_all_terkini.layoutManager = layoutManagerStaggered
+//        rv_see_all_terkini.adapter = ProyekTerkiniAdapter(listHome)
+//    }
 
 }
