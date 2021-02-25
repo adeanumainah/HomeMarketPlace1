@@ -1,5 +1,6 @@
 package com.dean.homemarketplace.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -8,14 +9,16 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import com.dean.homemarketplace.R
-import com.dean.homemarketplace.model.ResponseItem
+import com.dean.homemarketplace.model.ProductItem
+//import com.dean.homemarketplace.model.ResponseItem
 import com.dean.homemarketplace.ui.fragment.HomeFragment
 import java.lang.String
 
-class PropertyPopularAdapter(context: Context?, resource: Int, objects: List<ResponseItem>) :
+class PropertyPopularAdapter(context: Context?, resource: Int, objects: List<ProductItem>) :
 
-    ArrayAdapter<ResponseItem?>(context!!, resource, objects) {
-    private val personItem: List<ResponseItem> = objects
+    ArrayAdapter<ProductItem?>(context!!, resource, objects) {
+    private val personItem: List<ProductItem>
+    @SuppressLint("ViewHolder")
     override fun getView(
         position: Int,
         convertView: View?,
@@ -41,5 +44,9 @@ class PropertyPopularAdapter(context: Context?, resource: Int, objects: List<Res
             context.startActivity(intent)
         }
         return v
+    }
+
+    init {
+        personItem = objects
     }
 }

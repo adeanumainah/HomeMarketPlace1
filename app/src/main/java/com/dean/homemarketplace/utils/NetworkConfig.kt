@@ -1,6 +1,7 @@
 package com.dean.homemarketplace.utils
 
-import com.dean.homemarketplace.model.ResponseItem
+//import com.dean.homemarketplace.model.ResponseItem
+import com.dean.homemarketplace.model.ProductItem
 import com.dean.homemarketplace.model.Users
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -33,7 +34,7 @@ class NetworkConfig {
 
     interface Users {
         @GET("users")
-        fun getUsers(): Call<List<ResponseItem>>
+        fun getUsers(): Call<List<ProductItem>>
     }
 }
 

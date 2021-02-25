@@ -5,11 +5,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.dean.homemarketplace.R
-import com.dean.homemarketplace.model.Home
-import com.dean.homemarketplace.model.ResponseItem
+import com.dean.homemarketplace.model.ProductItem
+//import com.dean.homemarketplace.model.ResponseItem
 import kotlinx.android.synthetic.main.row_listh.view.*
 
-class ProyekTerkiniAdapter(val data: List<ResponseItem>?):
+class ProyekTerkiniAdapter(val data: List<ProductItem>?):
     RecyclerView.Adapter<ProyekTerkiniAdapter.TerkiniViewHolder>() {
 
 
@@ -28,7 +28,7 @@ class ProyekTerkiniAdapter(val data: List<ResponseItem>?):
 
     //viewholder bergunu u ngereset data ke view kita
     class TerkiniViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(get: ResponseItem?) {
+        fun bind(get: ProductItem?) {
 
             itemView.tv_name_rumah.text = get?.name
             itemView.tv_address_rumah.text = get?.address

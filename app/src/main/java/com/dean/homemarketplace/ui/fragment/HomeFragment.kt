@@ -8,11 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.ListView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.dean.homemarketplace.R
 import com.dean.homemarketplace.activity.DetailActivity
 import com.dean.homemarketplace.activity.SeeAllPopularActivity
@@ -21,7 +18,8 @@ import com.dean.homemarketplace.adapter.HomeAdapter
 import com.dean.homemarketplace.adapter.PropertyPopularAdapter
 import com.dean.homemarketplace.adapter.ProyekTerkiniAdapter
 import com.dean.homemarketplace.model.Home
-import com.dean.homemarketplace.model.ResponseItem
+import com.dean.homemarketplace.model.ProductItem
+//import com.dean.homemarketplace.model.ResponseItem
 import com.dean.homemarketplace.utils.NetworkConfig
 import com.dean.homemarketplace.utils.ProductServices
 import com.google.gson.Gson
@@ -37,7 +35,7 @@ import java.util.ArrayList
 class HomeFragment : Fragment() {
 
     private val rumahList = ArrayList<Home>()
-    var list: List<ResponseItem> = ArrayList<ResponseItem>()
+    var list: List<ProductItem> = ArrayList<ProductItem>()
     private lateinit var proyekterkiniAdapter: ProyekTerkiniAdapter
     var propertyServices: ProductServices? = null
     var rv: ListView? = null
@@ -67,10 +65,10 @@ class HomeFragment : Fragment() {
 
     private val ListHome: Unit
         get() {
-            val call: Call<List<ResponseItem>>? = propertyServices?.product
-            call?.enqueue(object : Callback<List<ResponseItem>> {
+            val call: Call<List<ProductItem>>? = propertyServices?.product
+            call?.enqueue(object : Callback<List<ProductItem>> {
 
-                override fun onResponse(call: Call<List<ResponseItem>>, response: Response<List<ResponseItem>>) {
+                override fun onResponse(call: Call<List<ProductItem>>, response: Response<List<ProductItem>>) {
                     if (response.isSuccessful) {
                         list = response.body()!!
                         rv!!.adapter = PropertyPopularAdapter(
@@ -81,7 +79,7 @@ class HomeFragment : Fragment() {
                     }
                 }
 
-                override fun onFailure(call: Call<List<ResponseItem>>, t: Throwable) {
+                override fun onFailure(call: Call<List<ProductItem>>, t: Throwable) {
                     Log.e("ERROR: ", t.message!!)
                 }
 
@@ -124,14 +122,14 @@ class HomeFragment : Fragment() {
 
         NetworkConfig().getService()
             .getUsers()
-            .enqueue(object : Callback<List<ResponseItem>> {
-                override fun onFailure(call: Call<List<ResponseItem>>, t: Throwable) {
+            .enqueue(object : Callback<List<ProductItem>> {
+                override fun onFailure(call: Call<List<ProductItem>>, t: Throwable) {
                     Toast.makeText(activity,"Yahh! ga muncul",Toast.LENGTH_SHORT).show()
                 }
 
                 override fun onResponse(
-                    call: Call<List<ResponseItem>>,
-                    response: Response<List<ResponseItem>>
+                    call: Call<List<ProductItem>>,
+                    response: Response<List<ProductItem>>
                 ) {
                     Log.d("TEST", "onResponse: ${Gson().toJson(response.body())}")
                     rv_terkini.adapter = HomeAdapter(response.body())

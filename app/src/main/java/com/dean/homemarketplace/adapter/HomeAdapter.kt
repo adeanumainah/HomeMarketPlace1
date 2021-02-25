@@ -7,11 +7,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.dean.homemarketplace.R
-import com.dean.homemarketplace.model.ResponseItem
+import com.dean.homemarketplace.model.ProductItem
+//import com.dean.homemarketplace.model.ResponseItem
 import kotlinx.android.synthetic.main.activity_detail.view.*
 import kotlinx.android.synthetic.main.row_listh.view.*
 
-class HomeAdapter(val dataHome: List<ResponseItem>?) :
+class HomeAdapter(val dataHome: List<ProductItem>?) :
     RecyclerView.Adapter<HomeAdapter.HomeViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
@@ -28,7 +29,7 @@ class HomeAdapter(val dataHome: List<ResponseItem>?) :
     }
 
     class HomeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(get: ResponseItem?) {
+        fun bind(get: ProductItem?) {
 //            Glide.with(itemView.context).load(home.images)
 //                    .apply(RequestOptions().override(300)).into(iv_popular)
 

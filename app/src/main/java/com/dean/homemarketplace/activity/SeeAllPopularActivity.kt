@@ -12,7 +12,8 @@ import com.androidnetworking.interfaces.JSONArrayRequestListener
 import com.dean.homemarketplace.R
 import com.dean.homemarketplace.adapter.PropertyPopularAdapter
 import com.dean.homemarketplace.model.Home
-import com.dean.homemarketplace.model.ResponseItem
+import com.dean.homemarketplace.model.ProductItem
+//import com.dean.homemarketplace.model.ResponseItem
 import kotlinx.android.synthetic.main.activity_see_all_popular.*
 import org.json.JSONArray
 import org.json.JSONException
@@ -20,7 +21,7 @@ import org.json.JSONException
 class SeeAllPopularActivity : AppCompatActivity() {
 
     private val listHome = ArrayList<Home>()
-    var responseItem: MutableList<ResponseItem> = ArrayList()
+    var responseItem: MutableList<ProductItem> = ArrayList()
     var propertyPopularAdapter: PropertyPopularAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +41,7 @@ class SeeAllPopularActivity : AppCompatActivity() {
                     override fun onResponse(response: JSONArray) {
                         for (i in 0 until response.length()){
                             try {
-                                val dataApiPopular = ResponseItem()
+                                val dataApiPopular = ProductItem()
                                 val jsonObject = response.getJSONObject(i)
                                 dataApiPopular.name = jsonObject?.getString("name")
                                 dataApiPopular.address = jsonObject.getString("address")
