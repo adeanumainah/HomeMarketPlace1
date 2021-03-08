@@ -20,7 +20,7 @@ class SplashScreenActivity : AppCompatActivity() {
         Handler().postDelayed(Runnable {
             if (auth?.currentUser?.displayName != null){
                 startActivity<MainActivity>()
-            } else startActivity<SignInActivity>()
+            } else startActivity<WelcomeActivity>()
         }, 3000)
     }
 }

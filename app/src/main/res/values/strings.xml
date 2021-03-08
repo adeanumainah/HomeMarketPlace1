@@ -57,18 +57,15 @@
     <string name="sign_out">Sign Out</string>
     <string name="title_profile">Profile</string>
     <string name="edit_profile">Edit Profile</string>
-
-    <array name="data_photo">
-        <item>@drawable/house1</item>
-        <item>@drawable/house2</item>
-        <item>@drawable/house3</item>
-        <item>@drawable/house4</item>
-        <item>@drawable/house5</item>
-        <item>@drawable/house6</item>
-        <item>@drawable/house7</item>
-        <item>@drawable/house8</item>
-        <item>@drawable/house9</item>
+    <string name="welcome_to_the_app">Welcome to the App</string>
+    <string name="input_nomor_telepon">Input Nomor Telepon</string>
+    <string name="masuk">Masuk</string>
+    <string name="authentication_hp">Authentication HP</string>
+    <string name="submit_number">Submit Number</string>
+    <string name="phone">Phone</string>
+    <string name="upphone">Phone :</string>
+    <string name="masuk_sebagai_pembeli">Masuk sebagai pembeli</string>
+    <string name="masuk_sebagai_penjual">Masuk sebagai penjual</string>
 
 
-    </array>
 </resources>

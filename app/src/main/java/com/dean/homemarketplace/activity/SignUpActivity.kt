@@ -53,6 +53,7 @@ class SignUpActivity : AppCompatActivity() {
                         if (insertUser(
                                         name_sign_up.text.toString(),
                                         email_sign_up.text.toString(),
+                                        phone_sign_up.text.toString(),
                                         task.result?.user!!
                                 )){
                             startActivity<SignInActivity>()
@@ -69,12 +70,14 @@ class SignUpActivity : AppCompatActivity() {
     private fun insertUser(
             name: String,
             email: String,
+            phone: String,
             users: FirebaseUser
     ): Boolean {
         var user = Users()
         user.uid = users.uid
         user.name = name
         user.email = email
+        user.phone = phone
 
         val database = FirebaseDatabase.getInstance()
 

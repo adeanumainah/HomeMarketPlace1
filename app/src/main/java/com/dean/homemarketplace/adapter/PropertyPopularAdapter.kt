@@ -8,45 +8,51 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.dean.homemarketplace.R
-import com.dean.homemarketplace.model.ProductItem
+import com.dean.homemarketplace.model.DataItem
 //import com.dean.homemarketplace.model.ResponseItem
 import com.dean.homemarketplace.ui.fragment.HomeFragment
+import kotlinx.android.synthetic.main.row_listh.view.*
 import java.lang.String
 
-class PropertyPopularAdapter(context: Context?, resource: Int, objects: List<ProductItem>) :
+class PropertyPopularAdapter(var context: Context)
+    : RecyclerView.Adapter<PropertyPopularAdapter.ViewHolder>(){
 
-    ArrayAdapter<ProductItem?>(context!!, resource, objects) {
-    private val personItem: List<ProductItem>
-    @SuppressLint("ViewHolder")
-    override fun getView(
-        position: Int,
-        convertView: View?,
-        parent: ViewGroup
+    private var listData: List<DataItem> = ArrayList()
 
-    ): View {
-        val inflater =
-            context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val v: View = inflater.inflate(R.layout.row_listh, parent, false)
-        val txtNameRumah = v.findViewById<TextView>(R.id.tv_name_rumah)
-        val txtAddressRumah = v.findViewById<TextView>(R.id.tv_address_rumah)
-        val txtIdRumah = v.findViewById<TextView>(R.id.tv_id_rumah)
+    fun setData(items: List<DataItem>) {
+        listData = items
+        //buat ngereload/syncronize data
+        notifyDataSetChanged()
+    }
 
-        txtIdRumah.text = (String.valueOf(personItem[position].id))
-        txtNameRumah.text = (String.valueOf(personItem[position].name))
-        txtAddressRumah.text = String.valueOf(personItem[position].address)
-
-        v.setOnClickListener {
-            val intent = Intent(context, HomeFragment::class.java)
-            intent.putExtra("id", String.valueOf(personItem[position].id))
-            intent.putExtra("name", personItem[position].name)
-            intent.putExtra("desc", personItem[position].desc)
-            context.startActivity(intent)
+    inner class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
+        fun bind(data: DataItem) {
+            with(itemView) {
+                tv_name_rumah.text = data.name
+                tv_address_rumah.text = data.address
+                Glide.with(context).load(data.image).centerCrop().into(iv_rumah)
+                itemView.setOnClickListener {
+                    itemView.context
+                }
+            }
         }
-        return v
+
     }
 
-    init {
-        personItem = objects
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PropertyPopularAdapter.ViewHolder {
+        val view = LayoutInflater.from(context).inflate(R.layout.row_listh, parent, false)
+        return ViewHolder(view)
+
     }
+
+    override fun onBindViewHolder(holder: PropertyPopularAdapter.ViewHolder, position: Int) {
+        holder.bind(listData.get(position))
+
+    }
+
+    override fun getItemCount(): Int = listData.size
+
 }

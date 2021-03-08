@@ -1,6 +1,5 @@
 package com.dean.homemarketplace.ui.fragment
 
-import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,7 +10,6 @@ import com.dean.homemarketplace.activity.SignInActivity
 import com.dean.homemarketplace.model.Users
 import com.dean.homemarketplace.utils.Constan
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
@@ -58,6 +56,7 @@ class ProfileFragment : Fragment() {
     private fun showProfile(data: Users?) {
         tv_username_profile.text = data?.name
         tv_email_profile.text = data?.email
+        tv_phone_profile.text = data?.phone
 
         btn_signout.onClick {
             auth?.signOut()

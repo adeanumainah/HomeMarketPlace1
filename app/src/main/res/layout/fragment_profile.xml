@@ -33,7 +33,6 @@
                     android:layout_below="@+id/login_title"
                     android:layout_centerHorizontal="true"
                     android:layout_margin="9dp"
-                    android:layout_marginTop="16dp"
                     android:background="@drawable/user_profile_image_background"
                     android:elevation="4dp"
                     android:src="@drawable/house" />
@@ -54,11 +53,11 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="330dp"
-                android:layout_height="@dimen/_350dp"
+                android:layout_height="@dimen/_420dp"
                 android:layout_below="@id/tv_editprofile"
                 android:layout_marginStart="40dp"
                 app:cardCornerRadius="@dimen/_10dp"
-                android:layout_marginTop="@dimen/_40dp">
+                android:layout_marginTop="@dimen/_20dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -130,6 +129,7 @@
                         android:layout_marginLeft="@dimen/_30dp"
                         android:layout_marginRight="@dimen/_30dp" />
 
+
                     <View
                         android:id="@+id/view2"
                         android:layout_width="@dimen/_270dp"
@@ -139,18 +139,58 @@
                         android:layout_marginEnd="@dimen/_5dp"
                         android:background="@android:color/black" />
 
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/mustard"
+                        android:textSize="@dimen/_18sp"
+                        android:id="@+id/upphone"
+                        android:textStyle="bold"
+                        android:layout_below="@id/view2"
+                        android:text="@string/upphone"
+                        android:layout_marginStart="@dimen/_30dp"
+                        android:layout_marginTop="@dimen/_30dp"/>
+
+                    <TextView
+                        android:id="@+id/tv_phone_profile"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_45dp"
+                        android:drawableStart="@drawable/ic_baseline_phone_24"
+                        android:drawablePadding="@dimen/_15dp"
+                        android:hint="@string/phone"
+                        android:textSize="@dimen/_18sp"
+                        android:layout_gravity="center"
+                        android:layout_below="@id/upphone"
+                        android:layout_marginTop="@dimen/_10dp"
+                        android:textColor="@color/black"
+                        android:gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/_30dp"
+                        android:layout_marginRight="@dimen/_30dp" />
+
+
+                    <View
+                        android:id="@+id/view3"
+                        android:layout_width="@dimen/_270dp"
+                        android:layout_height="0.5dp"
+                        android:layout_below="@id/tv_phone_profile"
+                        android:layout_marginStart="@dimen/_30dp"
+                        android:layout_marginEnd="@dimen/_5dp"
+                        android:background="@android:color/black" />
+
+
                     <Button
                         android:id="@+id/btn_signout"
                         android:layout_width="@dimen/_270dp"
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
                         android:background="@drawable/btn_gradiasi"
-                        android:layout_below="@id/tv_email_profile"
+                        android:layout_below="@id/view3"
                         android:text="@string/sign_out"
                         android:gravity="center"
                         android:layout_marginStart="@dimen/_30dp"
                         android:layout_marginBottom="@dimen/_15dp"
-                        android:layout_marginTop="@dimen/_50dp"/>
+                        android:layout_marginTop="@dimen/_30dp"/>
 
 
                 </RelativeLayout>

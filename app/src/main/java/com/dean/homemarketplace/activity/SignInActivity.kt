@@ -19,6 +19,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_sign_in.*
+import kotlinx.android.synthetic.main.fragment_profile.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
@@ -37,7 +38,7 @@ class SignInActivity : AppCompatActivity() {
         signin_with_google.onClick {
             signIn()
         }
-        createAkunLink.onClick {
+        tv_createAkunLink.onClick {
             startActivity<SignUpActivity>()
         }
         btn_masuk.onClick {
@@ -146,13 +147,17 @@ class SignInActivity : AppCompatActivity() {
     private fun insertUser(
             name: String,
             email: String,
-            idUser: String,
+            phone: String,
+//            idUser: String,
             uid: String?
+
     ): Boolean {
+
         val user = Users()
         user.email = email
         user.name = name
-        user.uid = auth?.uid
+        user.phone = phone
+        user.uid = uid
 
         val database = FirebaseDatabase.getInstance()
         val key = database.reference.push().key
@@ -160,6 +165,8 @@ class SignInActivity : AppCompatActivity() {
 
         myref.child(key ?: "")
                 .setValue(user)
+
+        startActivity<AuthenticationHpActivity>(Constan.key to key)
 
         return true
     }

@@ -29,7 +29,7 @@ class DetailActivity : AppCompatActivity() {
         tv_lable_desc.text = home?.desc
         tv_lable_type.text = home?.type
         tv_lable_developer.text = home?.developer
-        tv_lable_fproperty.text = home?.property_facilities
+        tv_lable_fproperty.text = home?.property_facilties
         tv_lable_sertifikat.text = home?.certificate
         tv_lable_furnished.text = home?.furnished
         tv_lable_lantai.text = home?.number_of_floors

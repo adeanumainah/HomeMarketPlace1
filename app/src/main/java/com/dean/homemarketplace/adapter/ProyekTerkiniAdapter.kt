@@ -1,38 +1,53 @@
 package com.dean.homemarketplace.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.dean.homemarketplace.R
-import com.dean.homemarketplace.model.ProductItem
+import com.dean.homemarketplace.model.DataItem
 //import com.dean.homemarketplace.model.ResponseItem
 import kotlinx.android.synthetic.main.row_listh.view.*
 
-class ProyekTerkiniAdapter(val data: List<ProductItem>?):
-    RecyclerView.Adapter<ProyekTerkiniAdapter.TerkiniViewHolder>() {
+class ProyekTerkiniAdapter(var context: Context)
+    : RecyclerView.Adapter<ProyekTerkiniAdapter.ViewHolder>() {
 
+    private var listData: List<DataItem> = ArrayList()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TerkiniViewHolder {
-        //ngeinflate layout
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.row_listh, parent, false)
-        return TerkiniViewHolder(view)
-    }
-
-    override fun getItemCount(): Int = data?.size ?:0
-
-    override fun onBindViewHolder(holder: TerkiniViewHolder, position: Int) {
-        holder.bind(data?.get(position))
+    fun setData(items: List<DataItem>) {
+        listData = items
+        //buat ngereload/syncronize data
+        notifyDataSetChanged()
     }
 
     //viewholder bergunu u ngereset data ke view kita
-    class TerkiniViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(get: ProductItem?) {
-
-            itemView.tv_name_rumah.text = get?.name
-            itemView.tv_address_rumah.text = get?.address
+    inner class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
+        fun bind(data: DataItem) {
+            with(itemView) {
+                tv_name_rumah.text = data.name
+                tv_address_rumah.text = data.address
+                Glide.with(context).load(data.image).centerCrop().into(iv_rumah)
+                itemView.setOnClickListener {
+                    itemView.context
+                }
+            }
         }
+
     }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view = LayoutInflater.from(context).inflate(R.layout.row_listh, parent, false)
+        return ViewHolder(view)
+
+    }
+
+    override fun onBindViewHolder(holder: ProyekTerkiniAdapter.ViewHolder, position: Int) {
+        holder.bind(listData.get(position))
+
+    }
+
+    override fun getItemCount(): Int = listData.size
 
 }

@@ -19,13 +19,13 @@
         android:id="@+id/login_title"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="@dimen/_16dp"
         android:gravity="center_horizontal"
         android:text="@string/login_account"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="@dimen/_40dp"
         android:fontFamily="sans-serif-smallcaps"
         android:textColor="@color/colorPrimary"
-        android:textSize="26dp"
+        android:textSize="@dimen/_30sp"
         android:textStyle="bold" />
 
     <RelativeLayout
@@ -33,19 +33,19 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/login_title"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="70dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="@dimen/_30dp"
+        android:layout_marginTop="@dimen/_70dp"
+        android:layout_marginRight="@dimen/_30dp"
+        android:layout_marginBottom="@dimen/_10dp"
         android:background="@color/colorPrimary"
-        android:elevation="4dp"
-        android:padding="20dp">
+        android:elevation="@dimen/_4dp"
+        android:padding="@dimen/_20dp">
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingTop="30dp">
+            android:paddingTop="@dimen/_30dp">
 
             <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/et_email"
@@ -53,10 +53,10 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/btn"
                 android:drawableStart="@drawable/ic_email_black_24dp"
-                android:drawablePadding="20dp"
+                android:drawablePadding="@dimen/_20dp"
                 android:drawableTint="@android:color/white"
                 android:hint="@string/email"
-                android:inputType="text"
+                android:inputType="textEmailAddress"
                 android:singleLine="true"
                 android:textColor="@android:color/black"
                 android:textColorHint="@android:color/black" />
@@ -65,10 +65,10 @@
                 android:id="@+id/et_pass_user"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/_10dp"
                 android:background="@drawable/btn"
                 android:drawableStart="@drawable/ic_lock"
-                android:drawablePadding="20dp"
+                android:drawablePadding="@dimen/_20dp"
                 android:drawableTint="@android:color/white"
                 android:hint="@string/password"
                 android:inputType="textPassword"
@@ -80,15 +80,15 @@
                 android:id="@+id/btn_masuk"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="22dp"
+                android:layout_margin="@dimen/_22dp"
                 android:background="@color/white"
-                android:text="Masuk"
+                android:text="@string/masuk"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textSize="@dimen/_18sp" />
 
             <TextView
-                android:id="@+id/createAkunLink"
+                android:id="@+id/tv_createAkunLink"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -100,7 +100,7 @@
                 android:id="@+id/tv_registeredSosmed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="@dimen/_50dp"
                 android:gravity="center"
                 android:text="@string/login_with_your_social_media_account"
                 android:textColor="@android:color/white"
@@ -109,7 +109,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/_10dp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -128,13 +128,13 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/photo"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="@dimen/_100dp"
+        android:layout_height="@dimen/_100dp"
         android:layout_below="@+id/login_title"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/_16dp"
         android:background="@drawable/user_profile_image_background"
-        android:elevation="4dp"
+        android:elevation="@dimen/_4dp"
         android:scaleType="centerCrop"
         android:src="@drawable/estate3" />
 

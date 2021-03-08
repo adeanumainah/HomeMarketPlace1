@@ -1,5 +1,6 @@
 package com.dean.homemarketplace.ui.fragment
 
+import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -7,21 +8,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.ListView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.dean.homemarketplace.R
 import com.dean.homemarketplace.activity.DetailActivity
-import com.dean.homemarketplace.activity.SeeAllPopularActivity
 import com.dean.homemarketplace.activity.SeeAllTerkiniActivity
-import com.dean.homemarketplace.adapter.HomeAdapter
-import com.dean.homemarketplace.adapter.PropertyPopularAdapter
 import com.dean.homemarketplace.adapter.ProyekTerkiniAdapter
 import com.dean.homemarketplace.model.Home
-import com.dean.homemarketplace.model.ProductItem
+import com.dean.homemarketplace.model.ResponseHome
+import com.dean.homemarketplace.utils.ApiService
 //import com.dean.homemarketplace.model.ResponseItem
-import com.dean.homemarketplace.utils.NetworkConfig
-import com.dean.homemarketplace.utils.ProductServices
 import com.google.gson.Gson
 import com.synnapps.carouselview.CarouselView
 import com.synnapps.carouselview.ImageListener
@@ -30,19 +27,14 @@ import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.ArrayList
 
 class HomeFragment : Fragment() {
 
-    private val rumahList = ArrayList<Home>()
-    var list: List<ProductItem> = ArrayList<ProductItem>()
-    private lateinit var proyekterkiniAdapter: ProyekTerkiniAdapter
-    var propertyServices: ProductServices? = null
-    var rv: ListView? = null
-    private lateinit var propertypopularAdapter: PropertyPopularAdapter
+    private lateinit var terkiniAdapter: ProyekTerkiniAdapter
+    private lateinit var rv_terkini: RecyclerView
 
-    companion object{
-        fun defaultFragment(): HomeFragment{
+    companion object {
+        fun defaultFragment(): HomeFragment {
             val home_fragment = HomeFragment()
             //ngirim ke oncreate
             val bundle = Bundle()
@@ -57,34 +49,14 @@ class HomeFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        val v : View = inflater.inflate(R.layout.fragment_home, container, false)
 
-        ListHome
+        rv_terkini = v.findViewById(R.id.rv_terkini)
+        // Inflate the layout for this fragment
+        return v
 
     }
 
-    private val ListHome: Unit
-        get() {
-            val call: Call<List<ProductItem>>? = propertyServices?.product
-            call?.enqueue(object : Callback<List<ProductItem>> {
-
-                override fun onResponse(call: Call<List<ProductItem>>, response: Response<List<ProductItem>>) {
-                    if (response.isSuccessful) {
-                        list = response.body()!!
-                        rv!!.adapter = PropertyPopularAdapter(
-                            this@HomeFragment.context,
-                            R.layout.row_listh, list
-                        )
-
-                    }
-                }
-
-                override fun onFailure(call: Call<List<ProductItem>>, t: Throwable) {
-                    Log.e("ERROR: ", t.message!!)
-                }
-
-            })
-        }
 
     val imageContentSlider = intArrayOf(
         R.drawable.rumah1,
@@ -110,40 +82,75 @@ class HomeFragment : Fragment() {
         //membaca maximum index yang dibaca
         carouselView.setPageCount(imageContentSlider.count())
 
+        GetDatas()
+
         tv_see_all_terkini.setOnClickListener {
             val intent = Intent(context, SeeAllTerkiniActivity::class.java)
             startActivity(intent)
         }
 
-        tv_see_all_popular.setOnClickListener {
-            val intentBest = Intent(context, SeeAllPopularActivity::class.java)
-            startActivity(intentBest)
+//        tv_see_all_popular.setOnClickListener {
+//            val intentBest = Intent(context, SeeAllPopularActivity::class.java)
+//            startActivity(intentBest)
+//        }
+
+        terkiniAdapter = context?.let { ProyekTerkiniAdapter(it) }!!
+        rv_terkini.apply {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = terkiniAdapter
         }
+    }
 
-        NetworkConfig().getService()
-            .getUsers()
-            .enqueue(object : Callback<List<ProductItem>> {
-                override fun onFailure(call: Call<List<ProductItem>>, t: Throwable) {
-                    Toast.makeText(activity,"Yahh! ga muncul",Toast.LENGTH_SHORT).show()
+    private fun GetDatas() {
+
+        var loading = ProgressDialog.show(context, "Request Data", "Loading..")
+        ApiService.endpoint.getData().enqueue(
+                object : Callback<ResponseHome> {
+                    override fun onResponse(call: Call<ResponseHome>, response: Response<ResponseHome>) {
+//                        Log.d("Response", "Success" + response.body()?.data)
+
+
+                        loading.dismiss()
+                        Log.d("DATA", "hide loading")
+                        if (response.isSuccessful) {
+                            val data = response.body()
+
+
+                            Log.d("DATA", "success")
+                            if(data?.status == 200) {
+                                Log.d("DATA", "200")
+                                if(!data.data.isNullOrEmpty()){
+                                    Log.d("DATA", "ADA")
+                                    Log.d("DATA", Gson().toJson(data.data))
+                                    terkiniAdapter.setData(data.data!!)
+                                }
+
+                            }
+                        }
+                    }
+
+                    override fun onFailure(call: Call<ResponseHome>, t: Throwable) {
+                        Log.d("Response", "Failed : " + t.localizedMessage)
+                        loading.dismiss()
+                    }
                 }
 
-                override fun onResponse(
-                    call: Call<List<ProductItem>>,
-                    response: Response<List<ProductItem>>
-                ) {
-                    Log.d("TEST", "onResponse: ${Gson().toJson(response.body())}")
-                    rv_terkini.adapter = HomeAdapter(response.body())
-                }
 
-            })
+        )
 
     }
 
-    private fun showSelected(it: Home) {
-        val page = Intent(context, DetailActivity::class.java)
-        page.putExtra(DetailActivity.KEY_POPULAR_HOME, it)
-        startActivity(page)
-    }
+
+
+//    private fun showSelected(it: Home) {
+//        val page = Intent(context, DetailActivity::class.java)
+//        page.putExtra(DetailActivity.KEY_POPULAR_HOME, it)
+//        startActivity(page)
+//    }
+
+
 
 
 }
+
+
